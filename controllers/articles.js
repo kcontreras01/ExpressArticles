@@ -6,7 +6,7 @@ const API_URL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-ke
 const Article = require('../models/articles_model');
 const User = require('../models/users_model');
 
-router.get('/', Article.findArticles, (req, res) => {
+router.get('/:search', Article.findArticles, (req, res) => {
     //console.log('Rendering one article', res.locals.allArticles);
     const articleData = res.locals.allArticles;
     res.send(articleData);

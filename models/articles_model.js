@@ -1,18 +1,20 @@
 const axios = require('axios');
 const db = require('../db/config');
-const API_KEY = process.env.API_KEY;
+const API_KEY = 'e85bb79442a84aa1940993e942c98aae';
 const moment = require('moment');
 
 const Article = {};
 
 Article.findArticles = (req, res, next) => {
-    let search = req.body.value;
-    console.log('SEARCH IS', search);
+    let search = req.params.search;
+    // console.log('SEARCH IS', search);
     axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&api-key=${API_KEY}`)
         .then(allArticles => {
-            // console.log('the response is: ', allArticles.data.response.docs)
+            // console.log('the response is: ', allArticles)
             res.locals.allArticles = allArticles.data.response.docs
             next();
+        }).catch(err => {
+            console.log(err);
         });
 }
 
