@@ -20,12 +20,12 @@ app.use(logger('dev'));
 
 // before all routes, use the middleware we define in Auth to get the
 // current user
-app.use(Auth.authenticate);
+// app.use(Auth.authenticate);
 
 // set up base routes
 app.use('/articles', require('./controllers/articles'));
-app.use('/users', require('./controllers/users'));
-app.use('/login', require('./controllers/sessions'));
+// app.use('/users', require('./controllers/users'));
+// app.use('/login', require('./controllers/sessions'));
 
 
 // listen on port and run server
