@@ -1,6 +1,6 @@
 const axios = require('axios');
 const db = require('../db/config');
-const API_KEY = 'e85bb79442a84aa1940993e942c98aae';
+const API_KEY = process.env.API_KEY;
 const moment = require('moment');
 
 const Article = {};

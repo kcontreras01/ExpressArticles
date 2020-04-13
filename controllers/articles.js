@@ -7,7 +7,8 @@ const Article = require('../models/articles_model');
 const User = require('../models/users_model');
 
 router.get('/:search', Article.findArticles, (req, res) => {
-    //console.log('Rendering one article', res.locals.allArticles);
+    console.log('HERE', API_KEY)
+    // console.log('Rendering one article', res.locals.allArticles);
     const articleData = res.locals.allArticles;
     res.send(articleData);
 });
