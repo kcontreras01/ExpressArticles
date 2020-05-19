@@ -1,7 +1,7 @@
 const axios = require('axios');
 const db = require('../db/config');
 const API_KEY = process.env.API_KEY;
-const moment = require('moment');
+// const moment = require('moment');
 
 const Article = {};
 
@@ -31,7 +31,7 @@ Article.findAllForUser = (req, res, next) => {
 Article.saveSearch = (req, res, next) => {
     // console.log('in article saveSearch function')
     const { user_id, headline, content, web_url } = req.body;
-    const save_date = moment().format('dddd');
+    // const save_date = moment().format('dddd');
     // console.log(save_date)
     db.one('INSERT INTO articles (headline, content, url, user_id, save_date) VALUES ($1, $2, $3, $4, $5) RETURNING *', [headline, content, web_url, user_id, save_date])
         .then(savedArticle => {
