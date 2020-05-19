@@ -1,16 +1,14 @@
 const axios = require('axios');
 const db = require('../db/config');
-const API_KEY = 'e85bb79442a84aa1940993e942c98aae';
-const moment = require('moment');
+const API_KEY = process.env.API_KEY;
+// const moment = require('moment');
 
 const Article = {};
 
 Article.findArticles = (req, res, next) => {
     let search = req.params.search;
-    // console.log('SEARCH IS', search);
     axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&api-key=${API_KEY}`)
         .then(allArticles => {
-            // console.log('the response is: ', allArticles)
             res.locals.allArticles = allArticles.data.response.docs
             next();
         }).catch(err => {
@@ -33,7 +31,7 @@ Article.findAllForUser = (req, res, next) => {
 Article.saveSearch = (req, res, next) => {
     // console.log('in article saveSearch function')
     const { user_id, headline, content, web_url } = req.body;
-    const save_date = moment().format('dddd');
+    // const save_date = moment().format('dddd');
     // console.log(save_date)
     db.one('INSERT INTO articles (headline, content, url, user_id, save_date) VALUES ($1, $2, $3, $4, $5) RETURNING *', [headline, content, web_url, user_id, save_date])
         .then(savedArticle => {

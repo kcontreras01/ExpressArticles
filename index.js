@@ -30,5 +30,3 @@ app.use('/login', require('./controllers/sessions'));
 
 // listen on port and run server
 app.listen(port, () => console.log('server listening on ' + port));
-
-
