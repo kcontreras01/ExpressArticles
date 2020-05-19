@@ -3,7 +3,7 @@ const User = require('../models/users_model'),
       bcrypt = require('bcryptjs')
 
 // login route
-router.post('/', (req, res)=>{
+router.post('/login', (req, res)=>{ console.log(req.body)
   User // find by the lowercase email
     .findByEmail(req.body.email.toLowerCase())
     .then(data => { // after

@@ -7,10 +7,8 @@ const Article = {};
 
 Article.findArticles = (req, res, next) => {
     let search = req.params.search;
-    // console.log('SEARCH IS', search);
     axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&api-key=${API_KEY}`)
         .then(allArticles => {
-            // console.log('the response is: ', allArticles)
             res.locals.allArticles = allArticles.data.response.docs
             next();
         }).catch(err => {

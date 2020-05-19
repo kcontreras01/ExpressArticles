@@ -18,6 +18,3 @@ CREATE TABLE articles (
   user_id INT REFERENCES users (id),
   save_date VARCHAR
 );
-
-
-

@@ -17,12 +17,7 @@ router.get('/validate', Auth.restrict, (req, res)=>{
 })
 
 router.post('/', (req, res) => {
-
   const email = req.body.email.toLowerCase();
-  // this is an easier way of doing:
-  // const name = req.body.name,
-  //       password = req.body.password,
-  //       password_confirmation = req.body.password_confirmation;
   const {first_name, last_name, password, password_confirmation} = req.body;
 
 

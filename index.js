@@ -5,12 +5,9 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       port = process.env.PORT || 8080,
       Auth = require('./services/auth'),
-      cors = require('cors');
+      cors = require('cors')
 
 require('dotenv').config();
-
-console.log(process.env.PROJECT_ENV); 
-
 // use cors so we can talk to our other server
 app.use(cors());
 
@@ -33,5 +30,3 @@ app.use('/login', require('./controllers/sessions'));
 
 // listen on port and run server
 app.listen(port, () => console.log('server listening on ' + port));
-
-
